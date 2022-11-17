@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Hack Nerd Font Mono:pixelsize=18:type=Regular:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -93,6 +93,9 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.7;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
@@ -176,6 +179,8 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},		0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},		0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -201,6 +206,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
+	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
+	{ MODKEY|ControlMask,   XK_k,           kscrollup,      {.i = -1} },
+	{ MODKEY|ControlMask,   XK_j,           kscrolldown,    {.i = -1} },
 };
 
 /*

@@ -1,0 +1,29 @@
+--- config.def.h	2022-03-09 08:26:03.194323581 -0300
++++ config.def.h	2022-03-09 08:28:40.186246176 -0300
+@@ -127,22 +125,14 @@ static const char *colorname[] = {
+ 
+ /*
+  * Default colors (colorname index)
+- * foreground, background, cursor
++ * foreground, background, cursor, reverse cursor
+  */
+-unsigned int defaultfg = 257;
+-unsigned int defaultbg = 256;
+-unsigned int defaultcs = 257;
++unsigned int defaultfg = 258;
++unsigned int defaultbg = 259;
++unsigned int defaultcs = 256;
+ static unsigned int defaultrcs = 257;
+ 
+ /*
+- * Colors used, when the specific fg == defaultfg. So in reverse mode this
+- * will reverse too. Another logic would only make the simple feature too
+- * complex.
+- */
+-unsigned int defaultitalic = 7;
+-unsigned int defaultunderline = 7;
+-
+-/*
+  * Default shape of cursor
+  * 2: Block ("█")
+  * 4: Underline ("_")
